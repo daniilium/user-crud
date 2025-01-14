@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 
-
 import { DatabaseModule } from './database/database.module'
 import { LoggerModule } from 'nestjs-pino'
+import { ClientModule } from './client/client.module'
 
 @Module({
   imports: [
@@ -31,6 +31,7 @@ import { LoggerModule } from 'nestjs-pino'
 
     DatabaseModule,
 
+    ClientModule,
   ],
   controllers: [],
   providers: [],
