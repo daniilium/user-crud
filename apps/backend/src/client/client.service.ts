@@ -20,15 +20,28 @@ export class ClientService {
     return this.clientRepository.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} client`
+  findOne(id: string) {
+    return this.clientRepository.findOneBy({ id }).then((client) => {
+      if (!client) {
+        throw new Error('Client not found')
+      }
+      return client
+    })
   }
 
   update(id: number, updateClientDto: UpdateClientDto) {
     return `This action updates a #${id} client`
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} client`
+  remove(id: string) {
+    return this.clientRepository.delete(id).then((result) => {
+      if (result.affected === 0) {
+        throw new Error('Client not found')
+      }
+      if (result.affected > 1) {
+        throw new Error('Multiple clients deleted')
+      }
+      return true
+    })
   }
 }

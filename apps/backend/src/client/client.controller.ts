@@ -27,7 +27,7 @@ export class ClientController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.clientService.findOne(+id)
+    return this.clientService.findOne(id)
   }
 
   @Patch(':id')
@@ -37,6 +37,6 @@ export class ClientController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.clientService.remove(+id)
+    return this.clientService.remove(id)
   }
 }

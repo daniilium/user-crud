@@ -13,30 +13,9 @@ import {
 } from '@/shared/components/ui/dropdown-menu'
 
 import { Client } from '../model'
+import { RemoveClient } from '../ui'
 
 export const columns: ColumnDef<Client>[] = [
-  {
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
   {
     accessorKey: 'name',
     header: 'Имя',
@@ -70,7 +49,7 @@ export const columns: ColumnDef<Client>[] = [
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const { id } = row.original
 
       return (
         <DropdownMenu>
@@ -80,15 +59,21 @@ export const columns: ColumnDef<Client>[] = [
               <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Действия</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => {
+                navigator.clipboard.writeText(id)
+              }}
             >
-              Copy payment ID
+              Подробнее
             </DropdownMenuItem>
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
+
+            <RemoveClient id={id} />
+
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

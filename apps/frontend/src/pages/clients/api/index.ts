@@ -1,3 +1,5 @@
+import { removeOne } from './removeOne'
 import { useGetAll } from './useGetAll'
+import { useGetOneById } from './useGetOneById'
 
-export { useGetAll }
+export { useGetAll, useGetOneById, removeOne }

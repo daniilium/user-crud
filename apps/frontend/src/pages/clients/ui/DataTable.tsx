@@ -71,7 +71,7 @@ export default function DataTable({ data }: DataTableProps) {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Фильтрация по имени или компании..."
+          placeholder="Фильтрация по компании..."
           value={(table.getColumn('company')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
             table.getColumn('company')?.setFilterValue(event.target.value)
@@ -82,7 +82,7 @@ export default function DataTable({ data }: DataTableProps) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown />
+              Показать <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -160,11 +160,6 @@ export default function DataTable({ data }: DataTableProps) {
       </div>
 
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{' '}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-
         <div className="space-x-2">
           <Button
             variant="outline"

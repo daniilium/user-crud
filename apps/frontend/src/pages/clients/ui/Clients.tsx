@@ -9,5 +9,10 @@ export default function Clients() {
 
   if (error) return <div>Error: {error.message}</div>
 
-  if (data) return <DataTable data={data} />
+  if (data)
+    return (
+      <div className="m-4">
+        <DataTable data={data} />
+      </div>
+    )
 }
