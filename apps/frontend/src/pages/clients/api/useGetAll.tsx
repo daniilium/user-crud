@@ -1,6 +1,7 @@
 import useSWR from 'swr'
-import { Client } from '../model'
+
 import { ENV } from '@/shared/config'
+import { Client } from '@/entities/client'
 
 const fetcher = async (url: string) => {
   const response = await fetch(url)

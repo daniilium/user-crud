@@ -33,7 +33,8 @@ import {
 } from '@/shared/components/ui/table'
 
 import { columns } from '../config'
-import { Client } from '../model'
+import { Client } from '@/entities/client'
+import { NavLink } from 'react-router'
 
 type DataTableProps = {
   data: Client[]
@@ -160,6 +161,12 @@ export default function DataTable({ data }: DataTableProps) {
       </div>
 
       <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex-1 text-sm text-muted-foreground">
+          <Button>
+            <NavLink to="/client">Добавить нового клиента</NavLink>
+          </Button>
+        </div>
+
         <div className="space-x-2">
           <Button
             variant="outline"

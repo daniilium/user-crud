@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { DropdownMenuItem } from '@/shared/components/ui/dropdown-menu'
 
 import { removeOne } from '../api'
+import { toast } from '@/shared/hooks/use-toast'
 
 type PropsRemoveClient = {
   id: string
@@ -19,7 +20,12 @@ export function RemoveClient({ id }: PropsRemoveClient) {
   }
 
   const removeClient = async () => {
-    await removeOne(id).then(() => {})
+    await removeOne(id).then(() => {
+      toast({
+        title: 'Удалено!',
+        description: 'Пользователь удален.',
+      })
+    })
   }
 
   if (isQuestion)

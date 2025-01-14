@@ -13,7 +13,7 @@ export class ClientService {
   ) {}
 
   create(createClientDto: CreateClientDto) {
-    return 'This action adds a new client'
+    return this.clientRepository.save(createClientDto)
   }
 
   findAll() {
@@ -29,8 +29,10 @@ export class ClientService {
     })
   }
 
-  update(id: number, updateClientDto: UpdateClientDto) {
-    return `This action updates a #${id} client`
+  update(id: string, updateClientDto: UpdateClientDto) {
+    return this.clientRepository.update(id, updateClientDto).then((result) => {
+      console.log('>>>', result)
+    })
   }
 
   remove(id: string) {

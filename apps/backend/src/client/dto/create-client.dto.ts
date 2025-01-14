@@ -10,6 +10,6 @@ export class CreateClientDto {
   company: string
 
   @IsString()
-  @Length(0, 100)
+  @Length(3, 100)
   contactInfo: string
 }

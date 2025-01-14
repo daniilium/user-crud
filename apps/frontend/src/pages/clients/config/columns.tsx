@@ -2,7 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
 
 import { Button } from '@/shared/components/ui/button'
-import { Checkbox } from '@/shared/components/ui/checkbox'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +12,9 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu'
 
-import { Client } from '../model'
 import { RemoveClient } from '../ui'
+import { Client } from '@/entities/client'
+import { NavLink } from 'react-router'
 
 export const columns: ColumnDef<Client>[] = [
   {
@@ -62,19 +63,20 @@ export const columns: ColumnDef<Client>[] = [
 
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Действия</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => {
-                navigator.clipboard.writeText(id)
-              }}
-            >
-              Подробнее
+
+            <DropdownMenuItem>
+              <NavLink to={`/client/${id}`} state={{ isDisabled: true }}>
+                Подробнее
+              </NavLink>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
 
             <RemoveClient id={id} />
 
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>
+              <NavLink to={`/client/${id}`}>Редактировать</NavLink>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
