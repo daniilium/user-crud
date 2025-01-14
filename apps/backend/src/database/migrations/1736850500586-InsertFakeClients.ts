@@ -14,16 +14,13 @@ export class InsertFakeClients1736850500586 implements MigrationInterface {
     }
 
     const clients = []
-    for (let i = 0; i < 100; i++) {
+    const COUNT_CLIENTS = 100
+    for (let i = 0; i < COUNT_CLIENTS; i++) {
       clients.push({
         id: customFaker.string.uuid(),
         name: customFaker.person.fullName(),
         company: customFaker.company.name(),
-        contactInfo: `
-          ${faker.person.jobTitle()},
-          ${faker.person.bio()},
-          ${customFaker.phone.number({ style: 'human' })}
-        `,
+        contactInfo: `${faker.person.jobTitle()}; ${faker.person.bio()}; ${customFaker.phone.number({ style: 'human' })}`,
         createdAt: new Date(),
         updatedAt: new Date(),
       })
