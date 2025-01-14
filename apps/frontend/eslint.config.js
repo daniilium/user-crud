@@ -29,6 +29,9 @@ export default tseslint.config(
       ],
       
       'prettier/prettier': 'warn',
+      
+      '@typescript-eslint/no-unused-vars': 'warn',
+
     },
   },
 )
